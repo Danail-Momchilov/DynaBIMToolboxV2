@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = DynaBIMToolbox
+build_property.ProjectDir = B:\06. BIM AUTOMATION\02. C#\DYNAMO ZERO TOUCH NODES\DynaBIMToolbox\DynaBIMToolbox_net8\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

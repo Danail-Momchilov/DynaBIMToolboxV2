@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "t4qgotv3BIQ=",
+  "success": true,
+  "projectFilePath": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\DynaBIMToolbox.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\dynamovisualprogramming.dynamoservices\\3.6.0.9395\\dynamovisualprogramming.dynamoservices.3.6.0.9395.nupkg.sha512",
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\dynamovisualprogramming.zerotouchlibrary\\3.6.0.9395\\dynamovisualprogramming.zerotouchlibrary.3.6.0.9395.nupkg.sha512",
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\system.configuration.configurationmanager\\9.0.8\\system.configuration.configurationmanager.9.0.8.nupkg.sha512",
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\system.diagnostics.eventlog\\9.0.8\\system.diagnostics.eventlog.9.0.8.nupkg.sha512",
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\system.reflection.metadata\\8.0.0\\system.reflection.metadata.8.0.0.nupkg.sha512",
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\system.reflection.metadataloadcontext\\8.0.0\\system.reflection.metadataloadcontext.8.0.0.nupkg.sha512",
+    "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.8\\system.security.cryptography.protecteddata.9.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
