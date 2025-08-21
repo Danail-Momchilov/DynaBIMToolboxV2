@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t4qgotv3BIQ=",
+  "dgSpecHash": "5MXY6dDpXzA=",
   "success": true,
-  "projectFilePath": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\DynaBIMToolbox.csproj",
+  "projectFilePath": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\DynaBIMToolbox.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\dynamovisualprogramming.dynamoservices\\3.6.0.9395\\dynamovisualprogramming.dynamoservices.3.6.0.9395.nupkg.sha512",
     "C:\\Users\\Danail.Momchilov\\.nuget\\packages\\dynamovisualprogramming.zerotouchlibrary\\3.6.0.9395\\dynamovisualprogramming.zerotouchlibrary.3.6.0.9395.nupkg.sha512",

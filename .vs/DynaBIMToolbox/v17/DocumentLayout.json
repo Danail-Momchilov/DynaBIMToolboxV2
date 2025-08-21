@@ -1,17 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\",
+  "WorkspaceRootPath": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|b:\\06. bim automation\\02. c#\\dynamo zero touch nodes\\dynabimtoolbox\\dynabimtoolbox_net8\\invisible\\solidconversions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|solutionrelative:invisible\\solidconversions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|b:\\06. bim automation\\02. c#\\dynamo zero touch nodes\\dynabimtoolbox\\dynabimtoolbox_net8\\booleanapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|b:\\06. bim automation\\02. c#\\dynamo zero touch nodes\\dynabimtoolboxv2\\booleanapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|solutionrelative:booleanapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|b:\\06. bim automation\\02. c#\\dynamo zero touch nodes\\dynabimtoolbox\\dynabimtoolbox_net8\\dynabimtoolbox.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|b:\\06. bim automation\\02. c#\\dynamo zero touch nodes\\dynabimtoolboxv2\\invisible\\solidconversions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|solutionrelative:invisible\\solidconversions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|b:\\06. bim automation\\02. c#\\dynamo zero touch nodes\\dynabimtoolboxv2\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|b:\\06. bim automation\\02. c#\\dynamo zero touch nodes\\dynabimtoolboxv2\\dynabimtoolbox.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{63B4510D-7B5B-49C4-BBB7-70BD2710018A}|DynaBIMToolbox.csproj|solutionrelative:dynabimtoolbox.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,24 +34,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "README.md",
+              "DocumentMoniker": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAMkAAAAAAAAAAAAAAOQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-19T14:49:49.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SolidConversions.cs",
-              "DocumentMoniker": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\Invisible\\SolidConversions.cs",
+              "DocumentMoniker": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\Invisible\\SolidConversions.cs",
               "RelativeDocumentMoniker": "Invisible\\SolidConversions.cs",
-              "ToolTip": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\Invisible\\SolidConversions.cs",
+              "ToolTip": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\Invisible\\SolidConversions.cs",
               "RelativeToolTip": "Invisible\\SolidConversions.cs",
-              "ViewState": "AgIAAEYBAAAAAAAAAAAswMoAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-06T13:44:37.058Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DynaBIMToolbox.csproj",
-              "DocumentMoniker": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\DynaBIMToolbox.csproj",
+              "DocumentMoniker": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\DynaBIMToolbox.csproj",
               "RelativeDocumentMoniker": "DynaBIMToolbox.csproj",
-              "ToolTip": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\DynaBIMToolbox.csproj",
+              "ToolTip": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\DynaBIMToolbox.csproj",
               "RelativeToolTip": "DynaBIMToolbox.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -55,15 +72,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "BooleanAPI.cs",
-              "DocumentMoniker": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\BooleanAPI.cs",
+              "DocumentMoniker": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\BooleanAPI.cs",
               "RelativeDocumentMoniker": "BooleanAPI.cs",
-              "ToolTip": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolbox\\DynaBIMToolbox_net8\\BooleanAPI.cs",
+              "ToolTip": "B:\\06. BIM AUTOMATION\\02. C#\\DYNAMO ZERO TOUCH NODES\\DynaBIMToolboxV2\\BooleanAPI.cs",
               "RelativeToolTip": "BooleanAPI.cs",
-              "ViewState": "AgIAABIBAAAAAAAAAIA/wCkBAABHAAAAAAAAAA==",
+              "ViewState": "AgIAAKEGAAAAAAAAAAAtwKwGAABxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:14:25.867Z"
+              "WhenOpened": "2025-08-06T11:14:25.867Z",
+              "EditorCaption": ""
             }
           ]
         }

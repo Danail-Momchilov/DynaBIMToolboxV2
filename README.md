@@ -41,7 +41,7 @@ Consists of 3 subcategories - BooleanAPI, SolidsAPI and SurfacesAPI
 ![RevitApiExtrusionFromCurve](/images/RevitApiExtrusionFromCurve01.png)
 
 
-> **SolidsAPI -> RevitAPIExtrusionFromPlanarFace(Added in v 1.05)**
+> **SolidsAPI -> RevitAPIExtrusionFromPlanarFace(Added in v 1.0.5)**
 > Gets a PlanarFace and creates RevitAPI Solid extrusion from it
 
 ![RevitAPIExtrisionFromPlanarFace](/image/RevitAPIExtrisionFromPlanarFace.png)
@@ -53,7 +53,7 @@ Consists of 3 subcategories - BooleanAPI, SolidsAPI and SurfacesAPI
 ![TranslateSolidVertically](/images/TranslateSolidVertically01.png)
 
 
-**SolidsAPI -> ReturnSolidCentroid(Added in v 1.05)**
+**SolidsAPI -> ReturnSolidCentroid(Added in v 1.0.5)**
 > Gets the centroid of a Revit API solid and returns it as a Dynamo point
 
 ![ReturnSolidCentroid](/images/ReturnSolidCentroid.png)
@@ -69,20 +69,20 @@ Consists of 3 subcategories - BooleanAPI, SolidsAPI and SurfacesAPI
 ![RoomSurfaceIntersectionAreas](/images/RoomSurfaceIntersectionAreas01.png)
 
 
-> **BooleanAPI -> DoSolidsIntersect (Added in v 1.03)**
+> **BooleanAPI -> DoSolidsIntersect (Added in v 1.0.3)**
 > Checks if two API solids intersect. Returns either True or False
 
 ![DoSolidsIntersect](/images/DoSolidsIntersect01.png)
 ![DoSolidsIntersect](/images/DoSolidsIntersect02.png)
 
 
-> **BooleanAPI -> SolidIntersection (Added in v 1.03)**
+> **BooleanAPI -> SolidIntersection (Added in v 1.0.3)**
 > Gets two API Solids and returns the intersection
 
 ![SolidsIntersection](/images/SolidIntersection.png)
 
 
-> **BooleanAPI -> SolidsUnion (Added in v 1.03)**
+> **BooleanAPI -> SolidsUnion (Added in v 1.0.3)**
 > Gets a list of Autodesk.Revit.DB.Solid elements and returns a single, united Solid
 
 ![SolidsUnion](/images/SolidsUnion.png)
@@ -97,7 +97,7 @@ Consists of 3 subcategories - BooleanAPI, SolidsAPI and SurfacesAPI
 
 ![WallSurfacesFromRooms](/images/WallSurfacesFromRooms01.png)
 
-**Geometry -> RoomSurface (Added in v 1.05)**
+**Geometry -> RoomSurface (Added in v 1.0.5)**
 > Retrieves room's Geometry and extracts only the lowermost surface from it. Returns it as a Revit API PlanarFace
 
 ![RoomSurface](/images/RoomSurface.png)
@@ -165,7 +165,7 @@ Consists of 3 subcategories - DocumentData, ElementsData, GeometryData, Lists
 > Returns the bounding box for the specified room. It will be oriented in accordance with Project North
 
 
-> **ElementsData -> FamilyInstanceFamilyName (Added in v 1.03)**
+> **ElementsData -> FamilyInstanceFamilyName (Added in v 1.0.3)**
 > Gets a FamilyInstance and returns the name of its Family
 
 
@@ -183,37 +183,37 @@ Consists of 3 subcategories - DocumentData, ElementsData, GeometryData, Lists
 ![ReplaceWithIf](/images/ReplaceWithIf01.png)
 
 
-**Lists -> ListCombinatorConsistent (Added in v 1.03)**
+**Lists -> ListCombinatorConsistent (Added in v 1.0.3)**
 > Combines lists by placing elements with identical indices in sublists. If lists have different length, the last sublists will only contain a single element
 
 ![ListCombinatorConsistent](/images/ListCombinatorConsistent.png)
 
 
-**Lists -> IndexesOfMaxValue (Added in v 1.03)**
+**Lists -> IndexesOfMaxValue (Added in v 1.0.3)**
 > Returns the indexes of the maximal value in an input list. If the value occurs only once, the final list will contain a single index
 
 
-**Lists -> IndexesOfMinValue (Added in v 1.03)**
+**Lists -> IndexesOfMinValue (Added in v 1.0.3)**
 > Returns the indexes of the minimal value in an input list. If the value occurs only once, the final list will contain a single index
 
 
-> **GeometryData -> ReturnPointsCoordinates (Added in v 1.03)**
+> **GeometryData -> ReturnPointsCoordinates (Added in v 1.0.3)**
 > Gets a point and returns all three of its coordinates
 
 ![ReturnPointsCoordinates](/images/ReturnPointsCoordinates.png)
 
 
-> **GeometryData -> ReturnLineStartPointEndPoint (Added in v 1.03)**
+> **GeometryData -> ReturnLineStartPointEndPoint (Added in v 1.0.3)**
 > Returns both the start and end point of a line
 
 ![ReturnLineStartPointEndPoint](/images/ReturnLineStartPointEndPoint.png)
 
 
-**GeometryData -> IsCurveHorizontal (Added in v 1.03)**
+**GeometryData -> IsCurveHorizontal (Added in v 1.0.3)**
 > Checks if a curve is horizontal. Returns true or false
 
 
-**GeometryData -> IsSurfaceHorizontal (Added in v 1.05)**
+**GeometryData -> IsSurfaceHorizontal (Added in v 1.0.5)**
 > Checks if a given Dynamo surface is horizontal
 
 
@@ -221,12 +221,12 @@ Consists of 3 subcategories - DocumentData, ElementsData, GeometryData, Lists
 Currently, consists of only one subcategory - Geometry (Added in v 1.03)
 
 
-**Geometry -> VectorByCurve (Added in v 1.04)**
+**Geometry -> VectorByCurve (Added in v 1.0.4)**
 > Creates a vector from a curve's Start and End Point
 
 ![VectorByCurve](/images/VectorByCurve.png)
 
-**Geometry -> RectangleByMinMaxPoint (Added in v1.06)
+**Geometry -> RectangleByMinMaxPoint (Added in v1.0.6)
 > Creates a Rectangle by minPoint and maxPoint
 
 ![RectangleByMinMaxPoint](/images/RectangleByMinMaxPoint.png)

@@ -1706,7 +1706,7 @@ namespace Generate
         }
 
         /// <summary>
-        /// Creates a Rectangle by minPoint and maxPoint
+        /// Creates a Rectangle by minPoint and maxPoint | Currently works for vertical rectangle generation only
         /// </summary>
         /// <param name="minPoint"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
         /// <param name="maxPoint"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
@@ -1714,6 +1714,7 @@ namespace Generate
         /// <search> rectangle, by, two, min, max, minpoint, maxpoint </search>
         public static Autodesk.DesignScript.Geometry.Rectangle RectangleByMinMaxPoint(Autodesk.DesignScript.Geometry.Point minPoint, Autodesk.DesignScript.Geometry.Point maxPoint)
         {
+            // TODO: FUNCTIONALITY FOR NON VERTICAL RECTANGLES AS WELL
 
             List<Autodesk.DesignScript.Geometry.Point> points = new List<Autodesk.DesignScript.Geometry.Point>();
 
