@@ -1,0 +1,13 @@
+Package Version 2.0.0 is compatible with .NET 8.0 version and Revit 2025 and 2026
+
+Main objectives of this package is performing Boolean and Solid operations directly in the API, aimed for improved performance of time - consuming tasks. 
+
+Secondary objective is optimised data extraction from host model and linked elements. 
+
+Many other handy nodes for data extraction, list operations and sorting are also available.
+
+Detailed documentation can be found in the GitHub repo: https://github.com/Danail-Momchilov/DynaBIMToolboxV2
+
+For additional information, feedback and requests, please visit this topic on the forum: https://forum.dynamobim.com/t/new-package-dynabimtoolbox/95743/15
+
+keywords: dynabimtoolbox, dyna, bim, toolbox, revit, api, revitapi, boolean, solids

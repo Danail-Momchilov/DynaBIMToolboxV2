@@ -912,19 +912,16 @@ namespace GeometryAPI
         /// <param name="solidB"> Autodesk.Revit.DB.Solid || Revit API Solid </param>
         /// <returns> Boolean </returns>
         /// <search> solid, intersect, doesintersect, revitapi </search>
-        public static Autodesk.Revit.DB.Solid DoSolidsIntersect(Autodesk.Revit.DB.Solid solidA, Autodesk.Revit.DB.Solid solidB)
+        public static bool DoSolidsIntersect(Autodesk.Revit.DB.Solid solidA, Autodesk.Revit.DB.Solid solidB)
         {
             try
             {
                 Autodesk.Revit.DB.Solid intersection = BooleanOperationsUtils.ExecuteBooleanOperation(solidA, solidB, BooleanOperationsType.Intersect);
 
-                return intersection;
-                /*
                 if (intersection != null && intersection.Volume != 0)
                     return true;
                 else
                     return false;
-                */
             }
             catch (Exception e)
             {

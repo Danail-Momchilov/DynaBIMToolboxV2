@@ -465,7 +465,7 @@
         </member>
         <member name="M:Generate.Geometry.RectangleByMinMaxPoint(Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point)">
             <summary>
-            Creates a Rectangle by minPoint and maxPoint
+            Creates a Rectangle by minPoint and maxPoint | Currently works for vertical rectangle generation only
             </summary>
             <param name="minPoint"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
             <param name="maxPoint"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
