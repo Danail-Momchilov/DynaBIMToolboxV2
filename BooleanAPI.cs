@@ -20,9 +20,9 @@ using System.Security.Cryptography;
 using System.Linq;
 using Autodesk.Revit.DB.Architecture;
 using Generate;
+using System.IO;
 
 
-// namespace : interpreted as a main category in the package
 namespace GeometryAPI
 {
     /// <summary>
@@ -1389,6 +1389,101 @@ namespace Inspect
                 throw e;
             }
         }
+
+        /// <summary>
+        /// Returns the location, rotation, and base plane of the Family Instance.
+        /// </summary>
+        /// <param name="familyInstance"> Revit.Elements.FamilyInstance || FamilyInstance in Dynamo </param>
+        /// <returns name="pt"> Autodesk.DesignScript.Geometry.Point || The location point of the family instance </returns>
+        /// <returns name="rotation"> double || The rotation angle in degrees </returns>
+        /// <returns name="plane"> Autodesk.DesignScript.Geometry.Plane || The base plane of the family instance </returns>
+        /// <search> family instance, orientation, location, rotation, plane, transform </search>
+        [MultiReturn(new[] { "pt", "rotation", "plane" })]
+        public static Dictionary<string, object> FamilyInstanceOrientation(Revit.Elements.FamilyInstance familyInstance)
+        {
+            try
+            {
+                Autodesk.Revit.DB.FamilyInstance apiFamilyInstance = familyInstance.InternalElement as Autodesk.Revit.DB.FamilyInstance;
+
+                if (apiFamilyInstance == null)
+                    throw new ArgumentException("Element is not a valid FamilyInstance");
+
+                Dictionary<string, object> result = new Dictionary<string, object>();
+
+                Location location = apiFamilyInstance.Location;
+
+                if (location is LocationPoint locationPoint)
+                {
+                    XYZ revitPoint = locationPoint.Point;
+                    Autodesk.DesignScript.Geometry.Point dynamoPoint = 
+                        Autodesk.DesignScript.Geometry.Point.ByCoordinates(revitPoint.X * 30.48, revitPoint.Y * 30.48, revitPoint.Z * 30.48);
+
+                    result["pt"] = dynamoPoint;
+
+                    double rotationRadians = locationPoint.Rotation;
+                    double rotationDegrees = rotationRadians * (180.0 / Math.PI);
+
+                    result["rotation"] = rotationDegrees;
+
+                    Transform transform = apiFamilyInstance.GetTransform();
+                    XYZ xAxis = transform.BasisX;
+                    XYZ yAxis = transform.BasisY;
+                    XYZ zAxis = transform.BasisZ;
+
+                    // Use the location point as the plane origin
+                    Autodesk.DesignScript.Geometry.Point planeOrigin = dynamoPoint;
+
+                    Vector xVector = Vector.ByCoordinates(xAxis.X, xAxis.Y, xAxis.Z);
+
+                    Vector yVector = Vector.ByCoordinates(yAxis.X, yAxis.Y, yAxis.Z);
+
+                    Autodesk.DesignScript.Geometry.Plane plane =
+                        Autodesk.DesignScript.Geometry.Plane.ByOriginXAxisYAxis(planeOrigin, xVector, yVector);
+
+                    result["plane"] = plane;
+                }
+                else if (location is LocationCurve locationCurve)
+                {
+                    Autodesk.Revit.DB.Curve curve = locationCurve.Curve;
+                    XYZ startPoint = curve.GetEndPoint(0);
+
+                    Autodesk.DesignScript.Geometry.Point dynamoPoint = 
+                        Autodesk.DesignScript.Geometry.Point.ByCoordinates(startPoint.X * 30.48, startPoint.Y * 30.48, startPoint.Z * 30.48);
+
+                    result["pt"] = dynamoPoint;
+
+                    XYZ direction = (curve.GetEndPoint(1) - curve.GetEndPoint(0)).Normalize();
+                    double rotation = Math.Atan2(direction.Y, direction.X) * (180.0 / Math.PI);
+
+                    result["rotation"] = rotation;
+
+                    Transform transform = apiFamilyInstance.GetTransform();
+                    XYZ xAxis = transform.BasisX;
+                    XYZ yAxis = transform.BasisY;
+
+                    Autodesk.DesignScript.Geometry.Point planeOrigin = dynamoPoint;
+                    Vector xVector = Vector.ByCoordinates(xAxis.X, xAxis.Y, xAxis.Z);
+                    Vector yVector = Vector.ByCoordinates(yAxis.X, yAxis.Y, yAxis.Z);
+
+                    Autodesk.DesignScript.Geometry.Plane plane = 
+                        Autodesk.DesignScript.Geometry.Plane.ByOriginXAxisYAxis(planeOrigin, xVector, yVector);
+
+                    result["plane"] = plane;
+                }
+                else
+                {
+                    result["pt"] = null;
+                    result["rotation"] = 0.0;
+                    result["plane"] = null;
+                }
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 
     /// <summary>
@@ -1452,7 +1547,7 @@ namespace Inspect
         {
             try
             {
-                if (item == isEqualTo)
+                if (object.Equals(item, isEqualTo))
                     return changeWith;
                 else
                     return item;
@@ -1726,6 +1821,140 @@ namespace Generate
             Autodesk.DesignScript.Geometry.Rectangle rectangle = Autodesk.DesignScript.Geometry.Rectangle.ByCornerPoints(points);
 
             return rectangle;
+        }
+    }
+}
+
+/// <summary>
+/// UI Nodes Collection
+/// </summary>
+namespace UI
+{
+    public class Output
+    {
+        private Output() { }
+
+        /// <summary>
+        /// Creates text report files on Desktop and shows a TaskDialog with the results. Supports bilingual messages (English/Bulgarian)
+        /// </summary>
+        /// <param name="reportsNames"> List[string] | Names for the report files (without extension) </param>
+        /// <param name="reportsData"> List[string] | Content to write in each report file </param>
+        /// <param name="EN"> bool | If true, shows messages in English. If false, shows messages in Bulgarian </param>
+        /// <returns> string | Status message describing the operation result </returns>
+        /// <search> report, export, text file, desktop, output, task dialog, ui </search>
+        public static string TaskDialogReport(List<string> reportsNames, List<string> reportsData, bool EN)
+        {
+            try
+            {
+                if (reportsNames == null || reportsData == null)
+                {
+                    string msg = EN ? "Report names or data lists are null." : "Списъците с имена или данни на репортите са празни.";
+                    TaskDialog.Show("Report", msg);
+                    return msg;
+                }
+
+                if (reportsNames.Count != reportsData.Count)
+                {
+                    string msg = EN ? $"Mismatch in list lengths. Names count: {reportsNames.Count}, Data count: {reportsData.Count}"
+                                   : $"Несъответствие в дължината на списъците. Брой имена: {reportsNames.Count}, Брой данни: {reportsData.Count}";
+                    TaskDialog.Show("Report", msg);
+                    return msg;
+                }
+
+                if (reportsNames.Count == 0)
+                {
+                    string msg = EN ? "No reports to generate." : "Няма репорти за генериране.";
+                    TaskDialog.Show("Report", msg);
+                    return msg;
+                }
+
+                // Get the desktop path and create OutputReports folder
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string outputReportsPath = Path.Combine(desktopPath, "OutputReports");
+
+                // Create the directory if it doesn't exist
+                if (!Directory.Exists(outputReportsPath))
+                {
+                    Directory.CreateDirectory(outputReportsPath);
+                }
+
+                // Create report files
+                List<string> successfulReports = new List<string>();
+                List<string> failedReports = new List<string>();
+
+                for (int i = 0; i < reportsNames.Count; i++)
+                {
+                    try
+                    {
+                        string fileName = reportsNames[i];
+                        string fileContent = $"{fileName}\n\n{reportsData[i]}";
+
+                        // Sanitize filename to remove invalid characters
+                        string invalidChars = new string(Path.GetInvalidFileNameChars());
+                        foreach (char c in invalidChars)
+                        {
+                            fileName = fileName.Replace(c.ToString(), "_");
+                        }
+
+                        // Add .txt extension if not present
+                        if (!fileName.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                        {
+                            fileName += ".txt";
+                        }
+
+                        string filePath = Path.Combine(outputReportsPath, fileName);
+
+                        // Write the content to file
+                        File.WriteAllText(filePath, fileContent);
+                        successfulReports.Add(reportsNames[i]);
+                    }
+                    catch (Exception ex)
+                    {
+                        failedReports.Add($"{reportsNames[i]} (Error: {ex.Message})");
+                    }
+                }
+
+                // Build the message
+                string message = EN ? "Program completed! " : "Програмата завърши работа! ";
+
+                if (successfulReports.Count > 0)
+                {
+                    message += EN ? "The following reports have been exported to the 'OutputReports' folder on Desktop:"
+                                 : "В папка 'OutputReports' на Desktop са експортнати следните репорти:";
+                    for (int i = 0; i < successfulReports.Count; i++)
+                    {
+                        string name = successfulReports[i];
+                        if (i == successfulReports.Count - 1)
+                        {
+                            message += $" {name}.";
+                        }
+                        else
+                        {
+                            message += $" {name},";
+                        }
+                    }
+                }
+
+                if (failedReports.Count > 0)
+                {
+                    message += EN ? "\n\nThe following reports could not be created:"
+                                 : "\n\nСледните репорти не можаха да бъдат създадени:";
+                    foreach (string failed in failedReports)
+                    {
+                        message += $"\n- {failed}";
+                    }
+                }
+
+                TaskDialog.Show("Report", message);
+                return message;
+            }
+            catch (Exception ex)
+            {
+                string errorMsg = EN ? $"An error occurred while generating reports: {ex.Message}"
+                                    : $"Възникна грешка при генериране на репортите: {ex.Message}";
+                TaskDialog.Show("Error", errorMsg);
+                return errorMsg;
+            }
         }
     }
 }

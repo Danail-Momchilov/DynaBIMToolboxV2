@@ -1,0 +1,512 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DynaBIMToolbox</name>
+    </assembly>
+    <members>
+        <member name="T:GeometryAPI.SolidsAPI">
+            <summary>
+            Solids generation and handling, directly in the Revit API
+            </summary>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.GetWallSolid(Revit.Elements.Wall)">
+            <summary>
+            Get Dynamo wall and return its solid geometry as Revit API solid
+            </summary>
+            <param name="hostModelWall"> Wall || A wall instance from the host model </param>
+            <returns> Autodesk.DB.Solid || The solid, representing the wall Geometry in the API </returns>
+            <search> wall, solid, API </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.GetWallSolidTransformed(Revit.Elements.Wall,Autodesk.Revit.DB.RevitLinkInstance)">
+            <summary>
+            Get the Autodesk.DB.Solid for the specified wall from linked model
+            </summary>
+            <param name="linkModelWall"> Wall || A wall instance from linked model </param>
+            <param name="linkInstance"> LinkInstance || Revit Link Instance </param>
+            <returns> Autodesk.DB.Solid || The solid, representing the wall Geometry in the API </returns>
+            <search> wall, solid, API </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.GetAndUniteElementSolids(Revit.Elements.Element)">
+            <summary>
+            Get all the solids of an Element, unite them and return the united solid with transformed coordinate system, based on the link instance. Works for all objects, classified as Dynamo Elements, such as Windows, Doors, etc.
+            </summary>
+            <param name="element"> Element || Revit.Elements.Element </param>
+            <returns> Autodesk.DB.Solid || A single solid, representing all element solids in the API </returns>
+            <search> element, solid, API </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.GetAndUniteElementSolidsTransformed(Revit.Elements.Element,Autodesk.Revit.DB.RevitLinkInstance)">
+            <summary>
+            Get all the solids of an Element, unite them and return the united solid with transformed coordinate system, based on the link instance. Works for all objects, classified as Dynamo Elements, such as Windows, Doors, etc.
+            </summary>
+            <param name="element"> Element || Revit.Elements.Element </param>
+            <param name="linkInstance"> LinkInstance || Revit Link Instance </param>
+            <returns> Autodesk.DB.Solid || A single solid, representing all element solids in the API </returns>
+            <search> element, solid, API </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.ReturnDynamoSolid(Autodesk.Revit.DB.Solid)">
+            <summary>
+            Wrap Revit Autodesk.Revit.DB.Solid to get Dynamo solid
+            </summary>
+            <param name="solid"> Solid || Autodesk.Revit.DB.Solid </param>
+            <returns> Autodesk.DesignScript.Geometry || Dynamo Solid </returns>
+            <search> solid, API, Dynamo </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.RevitAPIExtrusionFromCurve(Autodesk.DesignScript.Geometry.Curve,System.Double,System.Double)">
+            <summary>
+            Create Autodesk.Revit.DB.Solid from a single curve, by offseting the curve in both direction, creating closed curveloop and extruding it
+            </summary>
+            <param name="line"> [points] || A straight Dynamo line </param>
+            <param name="width"> height || A specified width for the offset </param>
+            <param name="height"> Height for the extrusion </param>
+            <returns> Autodesk.Revit.DB.Solid || Revit API solid </returns>
+            <search> solid, API, Dynamo </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.RevitAPIExtrusionFromCurveTransformed(Autodesk.DesignScript.Geometry.Curve,System.Double,System.Double,Autodesk.Revit.DB.RevitLinkInstance)">
+            <summary>
+            Create Autodesk.Revit.DB.Solid from a single curve, by offseting the curve in both direction, creating closed curveloop, extruding and transforming its coordinate system
+            </summary>
+            <param name="line"> Line || A straight Dynamo line </param>
+            <param name="width"> Double || A specified width for the offset </param>
+            <param name="height"> Double || Height for the extrusion </param>
+            <param name="linkInstance"> Revit Link Instance </param>
+            <returns> Autodesk.Revit.DB.Solid || Revit API solid </returns>
+            <search> solid, API, Dynamo </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.RevitAPIExtrusionFromPlanarFace(Autodesk.Revit.DB.PlanarFace,System.Double)">
+            <summary>
+            Gets a PlanarFace and creates RevitAPI Solid extrusion from it
+            </summary>
+            <param name="face"> Autodesk.Revit.DB.PlanarFace || Revit API face </param>
+            <param name="height"> Double || Height in cm </param>
+            <returns> Autodesk.Revit.DB.Solid || RevitAPI Solid </returns>
+            <search> RevitAPI, api, API, solid, Solid, RevitAPI Solid, RevitAPISolid, fromplanarface, from, planar, face, from planar face </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.TranslateSolidVertically(Autodesk.Revit.DB.Solid,System.Double)">
+            <summary>
+            Translate Autodesk.revit.DB.Solid along the Z axis at the specified distance
+            </summary>
+            <param name="solid"> Solid || Autodesk.Revit.DB.Solid </param>
+            <param name="translation"> Number || A specified distance for vertical translation </param>
+            <returns> Autodesk.Revit.DB.Solid || Revit API solid </returns>
+            <search> solid, API, Dynamo, translate, vertical </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.ElementOrientedBboxSolid(Revit.Elements.Element,Autodesk.DesignScript.Geometry.Point,System.Double)">
+            <summary>
+            Returns element oriented bounding box for the specified element, represented as Revit API solid
+            </summary>
+            <param name="element"> Revit Family Instance || Tested with Windows and Doors </param>
+            <param name="point"> Point || Dynamo Point </param>
+            <param name="degAngle"> Decimal Degrees || Rotation Angle </param>
+            <returns> Autodesk.Revit.DB.Solid || Revit API solid </returns>
+            <search> solid, API, boundingbox, element oriented </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.ElementOrientedBboxSolidTransformed(Revit.Elements.Element,Autodesk.DesignScript.Geometry.Point,System.Double,Autodesk.Revit.DB.RevitLinkInstance)">
+            <summary>
+            Returns element oriented bounding box for the specified element, represented as Revit API solid, transformed, based on the link instance coordinate system
+            </summary>
+            <param name="element"> Revit Family Instance || Tested with Windows and Doors </param>
+            <param name="point"> Point || Dynamo Point </param>
+            <param name="degAngle"> Decimal Degrees || Rotation Angle </param>
+            <param name="linkInstance"> Revit Link Instance </param>
+            <returns> Autodesk.Revit.DB.Solid || Revit API solid </returns>
+            <search> solid, API, boundingbox, element oriented </search>
+        </member>
+        <member name="M:GeometryAPI.SolidsAPI.ReturnSolidCentroid(Autodesk.Revit.DB.Solid)">
+            <summary>
+            Gets the centroid of a Revit API solid and returns it as a Dynamo point
+            </summary>
+            <param name="solid"> Autodesk.Revit.DB.Solid || Revit API solid </param>
+            <returns> Autodesk.Designscript.Geometry.Point || Dynamo point</returns>
+            <search> solid, centroid, RevitAPI, solidcentroid, SolidCentroid, Centroid, return centroid, returncentroid </search>>
+        </member>
+        <member name="T:GeometryAPI.SurfacesAPI">
+            <summary>
+            Surfaces generation and handling, directly in the Revit API
+            </summary>
+        </member>
+        <member name="M:GeometryAPI.SurfacesAPI.WallSurfacesFromRooms(Revit.Elements.Room,System.Double,System.Double)">
+            <summary>
+            Get a list of Autodesk.Revit.DB.PlanarFace, representing all the wall faces of a room, based on specified height and base offset
+            </summary>
+            <param name="room"> Room </param>
+            <param name="height"> double height </param>
+            <param name="baseOffset"> double base offset </param>
+            <returns> List[PlanarFace] || List of planar faces, representing wall finish surfaces </returns>
+            <search> room, faces, API </search>
+        </member>
+        <member name="M:GeometryAPI.SurfacesAPI.ReturnDynamoFaces(Autodesk.Revit.DB.PlanarFace)">
+            <summary>
+            Surface wrapper - gets an Autodesk.Revit.DB.Surface and returns Dynamo surface
+            </summary>
+            <param name="face"> Autodesk.Revit.DB.PlanarFace || Revit API PlanarFace </param>
+            <returns> Dynamo Surface </returns>
+            <search> PlanarFace, surface, API </search>
+        </member>
+        <member name="M:GeometryAPI.SurfacesAPI.RoomSurface(Revit.Elements.Room)">
+            <summary>
+            Retrieves room's Geometry and extracts only the lowermost surface from it
+            </summary>
+            <param name="room"> Revit.Elements.Room | Dynamo Room </param>
+            <returns> PlanarFace | RevitAPI Face </returns>
+            <search> room, surface </search>>
+        </member>
+        <member name="T:GeometryAPI.BooleanAPI">
+            <summary>
+            Boolean operations, directly in the Revit API
+            </summary>
+        </member>
+        <member name="M:GeometryAPI.BooleanAPI.RoomFacesSolidIntersection(Revit.Elements.Room,System.Collections.Generic.List{Autodesk.Revit.DB.Solid},System.Double,System.Double)">
+            <summary>
+            Gets a list of Rooms, as well as Revit API Solids. Constructs room finish faces, based on the input base offset and height and returns all the face intersections
+            </summary>
+            <param name="room"> Revit.Elements.Rooms || Room element, wrapped through Dynamo </param>
+            <param name="solids"> [Autodesk.Revit.DB.Solid] || List of Revit API Solids </param>
+            <param name="baseOffset"> Double || Base offset constraint </param>
+            <param name="height"> Double || Height </param>
+            <returns> [Autodesk.Revit.DB.PlanarFace] || Revit Surfaces </returns>
+            <search> room, surface, solid, API </search>
+        </member>
+        <member name="M:GeometryAPI.BooleanAPI.RoomSurfaceIntersectionAreas(Revit.Elements.Room,System.Collections.Generic.List{Autodesk.Revit.DB.Solid},System.Double,System.Double)">
+            <summary>
+            Gets a list of Rooms, as well as Revit API Solids. Constructs room finish faces, based on the input base offset and height and returns all the face intersections
+            </summary>
+            <param name="room"> Revit.Elements.Rooms || Room element, wrapped through Dynamo </param>
+            <param name="solids"> [Autodesk.Revit.DB.Solid] || A list of Revit API solids </param>
+            <param name="baseOffset"> Double || Base offset constraint </param>
+            <param name="height"> Double || Height parameter </param>
+            <returns>
+            <list type = "bullet">
+            <item>
+            <description> test1 </description>
+            </item>
+            <item>
+            <description> test2 </description>
+            </item>
+            <item>
+            <description> test3 </description>
+            </item>
+            <item>
+            <description> test4 </description>
+            </item>
+            </list>
+            </returns>
+            <search> room, surface, solid, API </search>
+        </member>
+        <member name="M:GeometryAPI.BooleanAPI.DoSolidsIntersect(Autodesk.Revit.DB.Solid,Autodesk.Revit.DB.Solid)">
+            <summary>
+            Checks if two Autodesk.Revit.DB.Solid objects are intersecting. If an intersection between them is found, the volume of which is larger than zero, the node returns 'True'. Otherwise it returns 'False'
+            </summary>
+            <param name="solidA"> Autodesk.Revit.DB.Solid || Revit API Solid </param>
+            <param name="solidB"> Autodesk.Revit.DB.Solid || Revit API Solid </param>
+            <returns> Boolean </returns>
+            <search> solid, intersect, doesintersect, revitapi </search>
+        </member>
+        <member name="M:GeometryAPI.BooleanAPI.SolidsIntersection(Autodesk.Revit.DB.Solid,Autodesk.Revit.DB.Solid)">
+            <summary>
+            Gets two Revit API solids and returns their intersection solid, if found
+            </summary>
+            <param name="solidA"> Autodesk.Revit.DB.Solid || RevitAPI Solid </param>
+            <param name="solidB"> Autodesk.Revit.DB.Solid || RevitAPI Solid </param>
+            <returns>
+            <item>
+            <description> Autodesk.Revit.DB.Solid || Revit API Solid </description>
+            </item>
+            <item>
+            <description> Double || Numeric Volume </description>
+            </item>
+            </returns>
+            <search> solids, intersection, intersect solids </search>>
+        </member>
+        <member name="M:GeometryAPI.BooleanAPI.SolidsUnion(System.Collections.Generic.List{Autodesk.Revit.DB.Solid})">
+            <summary>
+            Gets a list of Autodesk.Revit.DB.Solid elements and returns a single, united Solid
+            </summary>
+            <param name="solidsList"> List Autodesk.Revit.DB.Solid || List of Revit Solids </param>
+            <returns> Autodesk.Revit.DB.Solid || Revit Solid </returns>
+        </member>
+        <member name="T:Inspect.ElementsData">
+            <summary>
+            Retrieving and working with different elements' data
+            </summary>
+        </member>
+        <member name="M:Inspect.ElementsData.ReturnSystemTypeName(Revit.Elements.Element)">
+            <summary>
+            Gets an element, belonging to a system family, e.g. Waals, Roofs, Floors, Ceilings. Works for both linked elements as well as elements in the host model
+            </summary>
+            <param name="element"> Revit.Elements.Element || Revit element, wrapped through Dynamo </param>
+            <returns> string || The type name of the element, eg. in the case of Walls, the name of the wall type </returns>
+            <search> system families, type, name </search>
+        </member>
+        <member name="M:Inspect.ElementsData.GetLinkedWallHostLevelName(Revit.Elements.Wall)">
+            <summary>
+            Works for Walls, obtained from linked files. The node gets the end point of the wall location curve, gets its Z component and check if the given height corresponds to a level in the host model. 
+            It applies a tolerance of a 1 cm. If such level is found, its name will be returned as an output
+            </summary>
+            <param name="wall"> Revit.Elements.Wall || Revit wall, wrapped through Dynamo </param>
+            <returns> string || Level name </returns>
+            <search> linked, walls, level </search>
+        </member>
+        <member name="M:Inspect.ElementsData.GetLinkedWallHostElevation(Revit.Elements.Wall)">
+            <summary>
+            Returns the host model elevation for the specified linked wall. The elevation is measured as the distance between the wall base curve's endpoint and the Project Base Point
+            </summary>
+            <param name="wall"> Revit.Elements.Wall || Revit wall, wrapped through Dynamo </param>
+            <returns> double || Height elevation </returns>
+            <search> linked, wall, elevation </search>
+        </member>
+        <member name="M:Inspect.ElementsData.EitherOneOfTwoParametersTypeInstance(Revit.Elements.Element,System.String,System.String)">
+            <summary>
+            This node would check if any of the specified parameters is available in the element, either as type or instance.
+            It returns their value in the order they were specified - if a value is found for the first parameter, it will be returned. If not, it will proceed to the second one.
+            If no value is found for both, it will return null
+            </summary>
+            <param name="element"> Revit.Elements.Element || Revit element, wrapped through Dynamo </param>
+            <param name="parameterName1"> String || Parameter name </param>
+            <param name="parameterName2"> String || Parameter name </param>
+            <returns> Object || Parameter value </returns>
+            <search> type, instance, parameter, either one </search>
+        </member>
+        <member name="M:Inspect.ElementsData.LevelElevation(Revit.Elements.Level)">
+            <summary>
+            Returns the elevation for each specified level. Typically the distance to the Internal Origin 
+            </summary>
+            <param name="level"> Revit.Elements.Level || Revit level, wrapped through Dynamo </param>
+            <returns> double || Level elevation </returns>
+            <search> level, elevation </search>
+        </member>
+        <member name="M:Inspect.ElementsData.LinkedFamilyInstanceElevation(Revit.Elements.Element)">
+            <summary>
+            Returns the elevation for each family instance, typically the distance to the Project Base Point. 
+            Works for families with origin, represented by a location point, such as Wall, Doors and other family instances.
+            Note: The end result is rounded
+            </summary>
+            <param name="element"> Revit.Elements.Element || Revit element, wrapped through Dynamo </param>
+            <returns> double || Z elevation </returns>
+            <search> linked, familyinstance, family instance, elevation </search>
+        </member>
+        <member name="M:Inspect.ElementsData.LinkedDoorWindowHostLevelName(Revit.Elements.Element)">
+            <summary>
+            Returns the name of the host model level for a Door or Window in a linked file. The level is calculated, based on the Family Instance location.
+            Sill Height is subtracted from the elevation. The node uses a tolerance of 1 cm. 
+            </summary>
+            <param name="element"> Revit.Elements.Element || Revit element, wrapped through Dynamo </param>
+            <returns> double || Z elevation </returns>
+            <search> linked, familyinstance, family instance, elevation </search>
+        </member>
+        <member name="M:Inspect.ElementsData.HostFamilyInstanceElevation(Revit.Elements.Element)">
+            <summary>
+            Returns the elevation of a family instance from the host model. Works for elements with Location Point, such as Doors, Windows, etc. 
+            Returns the elevation as the distance to Project Base Point.
+            </summary>
+            <param name="element"> Revit.Elements.Element || Revit element, wrapped through Dynamo </param>
+            <returns> double || Z elevation </returns>
+            <search> familyinstance, family instance, elevation </search>
+        </member>
+        <member name="M:Inspect.ElementsData.IsElementInControlPhase(System.Collections.Generic.List{System.String},System.String,Revit.Elements.Element)">
+            <summary>
+            Determines whether or not an element could be applied to the control phase. If an element was created in an earlier phase, 
+            than the one specified and was either not demolished or demolished in a later phase, the node returns True. Otherwise, it returns False
+            </summary>
+            <param name="phasesOrdered"> [string] || List with phase names, sorted in a chronological order </param>
+            <param name="controlPhase"> string || Name of the control phase </param>
+            <param name="element"> [Revit.Elements.Element] || list with Revit elements, wrapped through Dynamo </param>
+            <returns>
+            <list type = "bullet">
+            <item>
+            <description> True or False </description>
+            </item>
+            <item>
+            <description> If any exceptions were found, they will be displayed here </description>
+            </item>
+            </list>
+            </returns>
+            <search> phase, control phase, element, does belong to phase </search>
+        </member>
+        <member name="M:Inspect.ElementsData.PhaseName(Revit.Elements.Element)">
+            <summary>
+            Returns the name of the specified phase
+            </summary>
+            <param name="phase"> Revit.Elements.Phase | Revit phase, wrapped through Dynamo </param>
+            <returns> string | The name of the phase as string </returns>
+            <search> phase, phase name, name </search>
+        </member>
+        <member name="M:Inspect.ElementsData.RoomBoundingBox(Revit.Elements.Room)">
+            <summary>
+            Returns the bounding box for the specified room. It will be oriented in accordance with Project North
+            </summary>
+            <param name="room"> </param>
+            <returns> Autodesk.DesignScript.Geometry.BoundingBox | Dynamo Bounding Box </returns>
+            <search> room, bounding box </search>>
+        </member>
+        <member name="M:Inspect.ElementsData.FamilyInstanceFamilyName(Revit.Elements.FamilyInstance)">
+            <summary>
+            Gets a FamilyInstance and returns the name of its Family
+            </summary>
+            <param name="familyInstance"> Revit.Elements.FamilyInstance || FamilyInstance in Dynamo </param>
+            <returns> String || The name of the Family </returns>
+        </member>
+        <member name="M:Inspect.ElementsData.FamilyInstanceOrientation(Revit.Elements.FamilyInstance)">
+            <summary>
+            Returns the location, rotation, and base plane of the Family Instance.
+            </summary>
+            <param name="familyInstance"> Revit.Elements.FamilyInstance || FamilyInstance in Dynamo </param>
+            <returns name="pt"> Autodesk.DesignScript.Geometry.Point || The location point of the family instance </returns>
+            <returns name="rotation"> double || The rotation angle in degrees </returns>
+            <returns name="plane"> Autodesk.DesignScript.Geometry.Plane || The base plane of the family instance </returns>
+            <search> family instance, orientation, location, rotation, plane, transform </search>
+        </member>
+        <member name="T:Inspect.Lists">
+            <summary>
+            Collection of nodes for list operations
+            </summary>
+        </member>
+        <member name="M:Inspect.Lists.AnyTrue(System.Collections.Generic.List{System.Boolean})">
+            <summary>
+            Checks if any of the bools in a given list is True
+            </summary>
+            <param name="list"> [object] | List of elements </param>
+            <returns> bool || True or False </returns>
+            <search> list, any, true </search>
+        </member>
+        <member name="M:Inspect.Lists.ActuallyWorkingListClean(System.Collections.Generic.List{System.Object})">
+            <summary>
+            A List.Clean node, that actually works... unlike the OOTB. Removes null values from the input list
+            </summary>
+            <param name="inputList"> [object] | List of elements </param>
+            <returns> [clean list] | The input list, properly cleaned </returns>
+            <search> list, clean, clean list, list.clean </search>>
+        </member>
+        <member name="M:Inspect.Lists.ReplaceWithIf(System.Object,System.Object,System.Object)">
+            <summary>
+            If an item (either an individual or a one in a list) is equal to the specified value, it will be replaced
+            </summary>
+            <param name="item"> object | Could be either an individual item or a list of items </param>
+            <param name="isEqualTo"> object | The value to search for. Could be any type of variable </param>
+            <param name="changeWith"> object | The value to replace with. Could be any type of variable </param>
+            <returns> object | Replaced value </returns>
+            <search> replace with, replace if, replace, find </search>>
+        </member>
+        <member name="M:Inspect.Lists.IndexesOfMaxValue(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Returns the indexes of the maximal value in an input list. If the value occurs only once, the final list will contain a single index
+            </summary>
+            <param name="inputList"> [object] | List of elements </param>
+            <returns> [int] | A List of integers </returns>
+            <search> indexes of, maximal value, indexesofminvalue, IndexesOfMinValue </search>
+        </member>
+        <member name="M:Inspect.Lists.IndexesOfMinValue(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Returns the indexes of the minimal value in an input list. If the value occurs only once, the final list will contain a single index
+            </summary>
+            <param name="inputList"> [object] | List of elements </param>
+            <returns> [int] | A List of integers </returns>
+            <search> indexes of, minimal value, IndexesOfMaxValue, indexesofmaxvalue </search>
+        </member>
+        <member name="M:Inspect.Lists.ListCombinatorConsistent(System.Collections.Generic.List{System.Object},System.Collections.Generic.List{System.Object})">
+            <summary>
+            Combines lists by placing elements with identical indices in sublists. If lists have different length, the last sublists will only contain a single element
+            </summary>
+            <param name="listA"> [object] | List of elements </param>
+            <param name="listB"> [object] | List of elements </param>
+            <returns> [[object]] | A list of lists of combined objects </returns>>
+            <search> list, combine, combinator, consistent, ListCombinatorConsistent, listcombinatorconsistent </search>
+        </member>
+        <member name="T:Inspect.DocumentData">
+            <summary>
+            Retrieving information from either linked or current document
+            </summary>
+        </member>
+        <member name="M:Inspect.DocumentData.GetPhasesInChronologicalOrder">
+            <summary>
+            Returns all phases of the active document, ordered chronologically. Result is return as a list of strings
+            </summary>
+            <returns> [string] | List of phase names, ordered chronologically </returns>
+            <search> phases, get phases, getphases, pahses chronological, chronological </search>>
+        </member>
+        <member name="T:Inspect.GeometryData">
+            <summary>
+            Retrieve Geometric Elements' Data
+            </summary>
+        </member>
+        <member name="M:Inspect.GeometryData.ReturnPointsCoordinates(Autodesk.DesignScript.Geometry.Point)">
+            <summary>
+            Gets a point and returns all three of its components
+            </summary>
+            <param name="point"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
+            <returns> </returns>
+            <search> point, coordinates </search>
+        </member>
+        <member name="M:Inspect.GeometryData.ReturnLineStartPointEndPoint(Autodesk.DesignScript.Geometry.Line)">
+            <summary>
+            Returns both the start and end point of a line
+            </summary>
+            <param name="line"> Autodesk.DesignScript.Geometry.Line || Dynamo Line </param>
+            <returns> </returns>
+            <search> return, startpoint, endpoint, start point, end point </search>>
+        </member>
+        <member name="M:Inspect.GeometryData.IsCurveHorizontal(Autodesk.DesignScript.Geometry.Curve)">
+            <summary>
+            Checks if a curve is horizontal
+            </summary>
+            <param name="curve"> [object] | List of elements </param>
+            <returns> bool | true or false </returns>
+            <search> curve, ishorizontal, isHorizontal, IsCurveHorizontal, iscurvehorizontal </search>>
+        </member>
+        <member name="M:Inspect.GeometryData.IsSurfaceHorizontal(Autodesk.DesignScript.Geometry.Surface)">
+            <summary>
+            Checks if a Surface is horizontal
+            </summary>
+            <param name="surface"> Autodesk.DesignScript.Geometry.Surface | Dynamo Surface </param>
+            <returns> bool | true or false </returns>
+            <search> surface, horizontal, is, is surface, isSurface, isSurfaceHorizontal, is surface horizontal </search>>
+        </member>
+        <member name="T:Generate.Geometry">
+            <summary>
+            Generate geometric elements
+            </summary>
+        </member>
+        <member name="M:Generate.Geometry.VectorByCurve(Autodesk.DesignScript.Geometry.Curve)">
+            <summary>
+            Creates a vector from a curve's Start and End Point
+            </summary>
+            <param name="curve"> Autodesk.DesignScript.Geometry.Curve | Dynamo Curve </param>
+            <returns> Vector | Dynamo Vector </returns>
+            <search> vector, by, curve, vectorbycurve, VectorByCurve, bycurve, byCurve </search>
+        </member>
+        <member name="M:Generate.Geometry.RectangleByMinMaxPoint(Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point)">
+            <summary>
+            Creates a Rectangle by minPoint and maxPoint | Currently works for vertical rectangle generation only
+            </summary>
+            <param name="minPoint"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
+            <param name="maxPoint"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
+            <returns> Rectangle | Dynamo Rectangle </returns>
+            <search> rectangle, by, two, min, max, minpoint, maxpoint </search>
+        </member>
+        <member name="M:UI.Output.TaskDialogReport(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            Creates text report files on Desktop and shows a TaskDialog with the results. Supports bilingual messages (English/Bulgarian)
+            </summary>
+            <param name="reportsNames"> List[string] | Names for the report files (without extension) </param>
+            <param name="reportsData"> List[string] | Content to write in each report file </param>
+            <param name="EN"> bool | If true, shows messages in English. If false, shows messages in Bulgarian </param>
+            <returns> string | Status message describing the operation result </returns>
+            <search> report, export, text file, desktop, output, task dialog, ui </search>
+        </member>
+        <member name="T:DynaBIMToolbox.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:DynaBIMToolbox.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:DynaBIMToolbox.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

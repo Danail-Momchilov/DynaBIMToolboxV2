@@ -345,6 +345,16 @@
             <param name="familyInstance"> Revit.Elements.FamilyInstance || FamilyInstance in Dynamo </param>
             <returns> String || The name of the Family </returns>
         </member>
+        <member name="M:Inspect.ElementsData.FamilyInstanceOrientation(Revit.Elements.FamilyInstance)">
+            <summary>
+            Returns the location, rotation, and base plane of the Family Instance.
+            </summary>
+            <param name="familyInstance"> Revit.Elements.FamilyInstance || FamilyInstance in Dynamo </param>
+            <returns name="pt"> Autodesk.DesignScript.Geometry.Point || The location point of the family instance </returns>
+            <returns name="rotation"> double || The rotation angle in degrees </returns>
+            <returns name="plane"> Autodesk.DesignScript.Geometry.Plane || The base plane of the family instance </returns>
+            <search> family instance, orientation, location, rotation, plane, transform </search>
+        </member>
         <member name="T:Inspect.Lists">
             <summary>
             Collection of nodes for list operations
@@ -471,6 +481,16 @@
             <param name="maxPoint"> Autodesk.DesignScript.Geometry.Point || Dynamo Point </param>
             <returns> Rectangle | Dynamo Rectangle </returns>
             <search> rectangle, by, two, min, max, minpoint, maxpoint </search>
+        </member>
+        <member name="M:UI.Output.TaskDialogReport(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            Creates text report files on Desktop and shows a TaskDialog with the results. Supports bilingual messages (English/Bulgarian)
+            </summary>
+            <param name="reportsNames"> List[string] | Names for the report files (without extension) </param>
+            <param name="reportsData"> List[string] | Content to write in each report file </param>
+            <param name="EN"> bool | If true, shows messages in English. If false, shows messages in Bulgarian </param>
+            <returns> string | Status message describing the operation result </returns>
+            <search> report, export, text file, desktop, output, task dialog, ui </search>
         </member>
         <member name="T:DynaBIMToolbox.Properties.Resources">
             <summary>
