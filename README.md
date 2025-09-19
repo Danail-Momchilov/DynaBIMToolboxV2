@@ -169,6 +169,12 @@ Consists of 3 subcategories - DocumentData, ElementsData, GeometryData, Lists
 > Gets a FamilyInstance and returns the name of its Family
 
 
+> **ElementsData -> FamilyInstanceOrientation (Added in v 2.0.1)**
+> Returns the location, rotation, and base plane of the Family Instance
+
+![FamilyInstanceOrientation](/images/FamilyInstanceOrientation.jpg)
+
+
 > **Lists -> ActuallyWorkingListClean**  
 > Just as the name suggests: a List.Clean node, that actually works... Removes null values from the input list
 
@@ -230,3 +236,13 @@ Currently, consists of only one subcategory - Geometry (Added in v 1.03)
 > Creates a Rectangle by minPoint and maxPoint
 
 ![RectangleByMinMaxPoint](/images/RectangleByMinMaxPoint.png)
+
+
+# UI Category
+Currently contains only one subcategory - Output
+
+**Output -> TaskDialogReport (Added in v 2.0.1)**
+> Creates text report files on Desktop and shows a TaskDialog with the results. Supports bilingual messages (English/Bulgarian)
+
+![TaskDialogReport](/images/TaskDialogReport_1.jpg)
+![TaskDialogReport](/images/TaskDialogReport_2.jpg)
